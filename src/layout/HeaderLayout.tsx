@@ -15,7 +15,7 @@ export const HeaderLayout = () => {
             <Link
                 style={{
                     flex: 1,
-                    backgroundColor: pathname === "/frontend-challenge" ? "#1E88E5" : "transparent",
+                    backgroundColor: pathname === "/frontend-challenge" || pathname === "/frontend-challenge/" ? "#1E88E5" : "transparent",
                     padding: 25,
                     color: "#ffffff",
                     fontFamily: "Roboto",
