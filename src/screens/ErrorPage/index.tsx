@@ -22,7 +22,7 @@ export default function ErrorPage() {
             title={error.status}
             subTitle={error.statusText}
             extra={[
-                <Button key={"main"} type="primary" href="/">
+                <Button key={"main"} type="primary" href="/frontend-challenge">
                     На главную
                 </Button>,
             ]}

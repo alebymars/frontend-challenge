@@ -15,7 +15,7 @@ export const ContentLayout = () => {
 
     return (
         <Layout.Content style={contentStyle}>
-            {pathname === "/" ? <AllCats /> : <Outlet />}
+            {pathname === "/frontend-challenge" ? <AllCats /> : <Outlet />}
         </Layout.Content>
     )
 }

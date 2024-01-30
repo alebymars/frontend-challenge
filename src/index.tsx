@@ -12,16 +12,16 @@ import AllCats from './screens/AllCats';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/frontend-challenge",
     element: <MainLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/favorite",
+        path: "favorite",
         element: <FavoriteCats />
       },
       {
-        path: "/all",
+        path: "all",
         element: <AllCats />
       }
     ]
