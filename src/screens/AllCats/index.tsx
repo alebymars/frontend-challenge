@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Spin } from 'antd';
+import Card from '../../components/Card';
 import MyButton from '../../components/MyButton';
 import { fetchAllCats } from '../../utils/fetchAllCats';
 import { addFavoriteCard } from '../../utils/favoriteCard';
@@ -41,52 +42,37 @@ const AllCats = () => {
     }, [spinning]);
 
 
+    const handleLoadCats = () => {
+        setIsHintMessage(true);
+        setSpinning(true);
+
+        fetchAllCats("live_5kZIu7k4qrmEklaAXqGBrjwSghock5RZ5a6HbQwxU4oHTMFHPrdajuMrT4Nc3QM9")
+            .then((cats: Cats[]) => {
+                const addNewCards = [...allCards, ...cats];
+                setAllCards(addNewCards);
+            })
+            .catch((e) => console.log("Error: ", e))
+            .finally(() => {
+                setIsHintMessage(false);
+                setSpinning(false);
+            })
+    }
+
     return (
         <div>
             <Spin spinning={spinning} fullscreen />
-            <div className='cards' style={{ gap: 20, display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+            <div className='cards' style={{ gap: 30, display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
                 {allCards ? allCards.map((cats: Cats, i: number) => (
-                    <div
-                        key={i}
-                        className='card'
-                    >
-                        <img
-                            alt='cats'
-                            src={cats.url}
-                            className='imgCat'
-                        />
-                        <div
-                            className={"likeButton"}
-                            onClick={() => {
-                                addFavoriteCard({
-                                    id: cats.id,
-                                    url: cats.url,
-                                    height: cats.height,
-                                    width: cats.width,
-                                });
-                            }}
-                        />
-                        <div className='gradientBlock' />
-                    </div>
+                    <Card
+                        key={i.toString()}
+                        url={cats.url}
+                        addFavoriteCard={() => addFavoriteCard(cats)}
+                    />
                 )) : null}
             </div>
             <MyButton
                 title='Загрузить еще котиков?'
-                onClick={() => {
-                    setIsHintMessage(true);
-                    setSpinning(true);
-
-                    fetchAllCats("live_5kZIu7k4qrmEklaAXqGBrjwSghock5RZ5a6HbQwxU4oHTMFHPrdajuMrT4Nc3QM9")
-                        .then((cats: Cats[]) => {
-                            const addNewCards = [...allCards, ...cats];
-                            setAllCards(addNewCards);
-                        })
-                        .catch((e) => console.log("Error: ", e))
-                        .finally(() => {
-                            setIsHintMessage(false);
-                            setSpinning(false);
-                        })
-                }}
+                onClick={handleLoadCats}
                 isLoading={isHintMessage}
             />
             {isHintMessage ? <p style={{ padding: 20 }}>...загружаем еще котиков...</p> : null}

@@ -22,7 +22,7 @@ const FavoriteCats = () => {
 
     return (
         <div style={{ paddingTop: 20, paddingBottom: 50 }}>
-            <div className='cards' style={{ gap: 15, display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+            <div className='cards' style={{ gap: 30, display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
                 {cards.map((cats: Cats, i: number) => (
                     <div key={i} className='card'>
                         <img src={cats.url} className='imgCat' />
