@@ -7,8 +7,9 @@ export default defineConfig({
     distPath: {
       root: "build",
     },
+    assetPrefix: "https://alebymars.github.io/frontend-challenge",
   },
   html: {
-    template: './public/index.html',
+    template: "./public/index.html",
   },
 });
