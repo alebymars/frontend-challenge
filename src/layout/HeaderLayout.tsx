@@ -14,13 +14,14 @@ export const HeaderLayout = () => {
         <Layout.Header style={headerStyle}>
             <Link
                 style={{
-                    flex: 1,
                     backgroundColor: pathname === "/frontend-challenge" || pathname === "/frontend-challenge/" ? "#1E88E5" : "transparent",
                     padding: 25,
-                    color: "#ffffff",
+                    color: pathname === "/frontend-challenge" || pathname === "/frontend-challenge/" ? "#ffffff" : "rgba(255, 255, 255, 0.70)",
                     fontFamily: "Roboto",
                     fontSize: 14,
-                    fontWeight: "400"
+                    fontWeight: "400",
+                    letterSpacing: 0.25,
+                    wordWrap: "break-word",
                 }}
                 to={`/frontend-challenge`}
             >
@@ -28,18 +29,19 @@ export const HeaderLayout = () => {
             </Link>
             <Link
                 style={{
-                    flex: 1,
-                    backgroundColor: pathname === "/frontend-challenge/favorite" ? "#1E88E5" : "transparent",
+                    backgroundColor: pathname === "/frontend-challenge/favorite" || pathname === "/frontend-challenge/favorite/" ? "#1E88E5" : "transparent",
                     padding: 25,
-                    color: "#ffffff",
+                    color: pathname === "/frontend-challenge/favorite" || pathname === "/frontend-challenge/favorite/" ? "#ffffff" : "rgba(255, 255, 255, 0.70)",
                     fontFamily: "Roboto",
                     fontSize: 14,
-                    fontWeight: "400"
+                    fontWeight: "400",
+                    letterSpacing: 0.25,
+                    wordWrap: "break-word"
                 }}
                 to={`/frontend-challenge/favorite`}
             >
                 Любимые котики
             </Link>
-        </Layout.Header>
+        </Layout.Header >
     )
 }

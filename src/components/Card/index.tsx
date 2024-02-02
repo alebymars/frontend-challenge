@@ -3,10 +3,13 @@ import "../../screens/AllCats/style.css"
 interface Props {
     key: string;
     url: string;
+    cards: object;
     addFavoriteCard: (card: object) => void;
+    onLikeButtonClick: () => void;
+    isLikeButtonActive: boolean;
 }
 
-const Card = ({ url, addFavoriteCard }: Props) => {
+const Card = ({ url, addFavoriteCard, isLikeButtonActive, onLikeButtonClick, cards }: Props) => {
     return (
         <div className='card'>
             <img
@@ -15,8 +18,11 @@ const Card = ({ url, addFavoriteCard }: Props) => {
                 className='imgCat'
             />
             <div
-                className={"likeButton"}
-                onClick={addFavoriteCard}
+                className={`likeButton${isLikeButtonActive ? ' activeButton' : ''}`}
+                onClick={() => {
+                    onLikeButtonClick();
+                    addFavoriteCard(cards);
+                }}
             />
             <div className='gradientBlock' />
         </div>
