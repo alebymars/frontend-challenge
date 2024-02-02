@@ -8,4 +8,7 @@ export default defineConfig({
       root: "build",
     },
   },
+  html: {
+    template: './public/index.html',
+  },
 });
